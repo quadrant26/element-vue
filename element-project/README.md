@@ -37,3 +37,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     vue.use(VueRouter)
 
         npm install vue-router@0.7.13 -D
+
+3. vue-resource
+
+    $http.get(url, data).then(response => {// success}, response => {// error})
+
+        npm i vue-resource@1.0.1 -D
