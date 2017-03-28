@@ -40,6 +40,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 3. vue-resource
 
-    $http.get(url, data).then(response => {// success}, response => {// error})
+    npm i vue-resource@1.0.1 -D
 
-        npm i vue-resource@1.0.1 -D
+    vue.use(VueResource)
+
+        $http.get(url, data).then(response => {// success}, response => {// error})
+
+
