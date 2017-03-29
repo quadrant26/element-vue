@@ -6,7 +6,7 @@ import Goods from './components/goods/Goods.vue'
 import Sellers from './components/sellers/Sellers.vue'
 import Ratings from './components/ratings/Ratings.vue'
 
-import './common/common.styl'
+import './common/stylus/index.styl'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
