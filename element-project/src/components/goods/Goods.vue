@@ -62,13 +62,14 @@ export default {
             for(let i = 0; i < this.listHeight.length; i++){
                 let height1 = this.listHeight[i];
                 let height2 = this.listHeight[i+1];
-                console.log(height1, height2);
+                console.log( !height2 || (this.scrollY >= height1 && this.scrollY < height2) , i);
                 if(!height2 || (this.scrollY >= height1 && this.scrollY < height2)){
                     // 高度区间
                     return i;
                 };
-                return 0;
-            }
+            };
+            // 超出范围返回 0
+            return 0;
         }
     },
     created() {
@@ -84,8 +85,6 @@ export default {
                 })
 
             }
-        }, response=> {
-
         })
     },
     methods:{
@@ -93,7 +92,7 @@ export default {
             if(!event._constructed){
                 return;
             }
-            let foodList = this.$els.foodsWrapper.getElementsByClassName(" food-list-hook");
+            let foodList = this.$els.foodsWrapper.getElementsByClassName("food-list-hook");
             let el = foodList[index];
             this.foodsScroll.scrollToElement(el, 300);
         },
@@ -111,7 +110,7 @@ export default {
             })
         },
         _calculateHeight(){
-            let  foodList = this.$els.foodsWrapper.getElementsByClassName(" food-list-hook");
+            let  foodList = this.$els.foodsWrapper.getElementsByClassName("food-list-hook");
             let height = 0;
             this.listHeight.push(height);
 
