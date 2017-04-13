@@ -34,8 +34,8 @@
                 default() {
                     return [
                         {
-                            price : 5,
-                            count : 4
+                            price : 0,
+                            count : 0
                         }
                     ];
                 }
