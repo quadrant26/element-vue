@@ -38,7 +38,7 @@
                 </li>
             </ul>
         </div>
-        <Shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></Shopcart>
+        <Shopcart :select-foods="selectFoods"  :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></Shopcart>
     </div>
 </template>
 
@@ -76,6 +76,17 @@ export default {
             };
             // 超出范围返回 0
             return 0;
+        },
+        selectFoods(){
+            let foods = [];
+            this.goods.forEach( (good) =>{
+                good.foods.forEach( (food) => {
+                    if(food.count){
+                        foods.push(food);
+                    }
+                })
+            })
+            return foods;
         }
     },
     created() {
