@@ -35,12 +35,14 @@
                 </li>
             </ul>
         </div>
+        <Shopcart></Shopcart>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
 
-import BScroll from 'better-scroll'
+import BScroll from 'better-scroll';
+import Shopcart from 'components/shopcart/Shopcart.vue';
 
 const ERR_OK = 0
 
@@ -121,7 +123,9 @@ export default {
             }
         }
     },
-    components: {}
+    components: {
+        Shopcart
+    }
 }
 
 </script>
