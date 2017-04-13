@@ -35,11 +35,11 @@
                 </li>
             </ul>
         </div>
-        <Shopcart></Shopcart>
+        <Shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></Shopcart>
     </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 
 import BScroll from 'better-scroll';
 import Shopcart from 'components/shopcart/Shopcart.vue';
@@ -64,7 +64,7 @@ export default {
             for(let i = 0; i < this.listHeight.length; i++){
                 let height1 = this.listHeight[i];
                 let height2 = this.listHeight[i+1];
-                console.log( !height2 || (this.scrollY >= height1 && this.scrollY < height2) , i);
+                
                 if(!height2 || (this.scrollY >= height1 && this.scrollY < height2)){
                     // 高度区间
                     return i;
