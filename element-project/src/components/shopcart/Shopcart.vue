@@ -22,72 +22,72 @@
 
 <script type="text/ecmascript-6">
 
-    export default {
-        data(){
-            return {
-
-            }
-        },
-        props : {
-            selectFoods: {
-                type : Array,
-                default() {
-                    return [
-                        {
-                            price : 0,
-                            count : 0
-                        }
-                    ];
-                }
-            },
-            deliveryPrice : {
-                type : Number,
-                default : 0
-            },
-            minPrice : {
-                type : Number,
-                default : 0
-            }
-        },
-        computed: {
-            totalPrice() {
-                let total = 0
-                this.selectFoods.forEach( (food) => {
-                    // 总价
-                    total += food.price * food.count
-
-                })
-                return total;
-            },
-            totalCount() {
-                let count = 0;
-                this.selectFoods.forEach( (food) => {
-                    count += food.count
-                });
-                return count;
-            },
-            payDesc() {
-                if(this.totalPrice === 0){
-                    return `￥${this.minPrice}元起送`;
-                }else if( this.totalPrice < this.minPrice ){
-                    let diff = this.minPrice - this.totalPrice;
-                    return `还差￥${diff}起送`;
-                }else{
-                    return `去结算`;
-                }
-            },
-            payClass() {
-                if( this.totalPrice < this.minPrice){
-                    return 'not-enough'
-                }else{
-                    return 'enough'
-                }
-            }
-        },
-        components : {
+export default {
+    data(){
+        return {
 
         }
+    },
+    props : {
+        selectFoods: {
+            type : Array,
+            default() {
+                return [
+                    {
+                        price : 0,
+                        count : 0
+                    }
+                ];
+            }
+        },
+        deliveryPrice : {
+            type : Number,
+            default : 0
+        },
+        minPrice : {
+            type : Number,
+            default : 0
+        }
+    },
+    computed: {
+        totalPrice() {
+            let total = 0
+            this.selectFoods.forEach( (food) => {
+                // 总价
+                total += food.price * food.count
+
+            })
+            return total;
+        },
+        totalCount() {
+            let count = 0;
+            this.selectFoods.forEach( (food) => {
+                count += food.count
+            });
+            return count;
+        },
+        payDesc() {
+            if(this.totalPrice === 0){
+                return `￥${this.minPrice}元起送`;
+            }else if( this.totalPrice < this.minPrice ){
+                let diff = this.minPrice - this.totalPrice;
+                return `还差￥${diff}起送`;
+            }else{
+                return `去结算`;
+            }
+        },
+        payClass() {
+            if( this.totalPrice < this.minPrice){
+                return 'not-enough'
+            }else{
+                return 'enough'
+            }
+        }
+    },
+    components : {
+
     }
+}
 
 </script>
 
