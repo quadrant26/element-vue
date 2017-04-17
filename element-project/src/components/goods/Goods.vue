@@ -38,7 +38,7 @@
                 </li>
             </ul>
         </div>
-        <Shopcart :select-foods="selectFoods"  :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></Shopcart>
+        <Shopcart v-ref:shopcart :select-foods="selectFoods"  :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></Shopcart>
     </div>
 </template>
 
@@ -68,7 +68,7 @@ export default {
             for(let i = 0; i < this.listHeight.length; i++){
                 let height1 = this.listHeight[i];
                 let height2 = this.listHeight[i+1];
-                
+
                 if(!height2 || (this.scrollY >= height1 && this.scrollY < height2)){
                     // 高度区间
                     return i;
@@ -113,6 +113,12 @@ export default {
             let el = foodList[index];
             this.foodsScroll.scrollToElement(el, 300);
         },
+        _drop(target){
+            // 性能优化 异步执行下落动画
+            this.$nextTick( () => {
+                this.$refs.shopcart.drop(target);
+            });
+        },
         _initScroll() {
             this.menuScroll = new BScroll(this.$els.menuWrapper, {
                 click: true
@@ -142,6 +148,11 @@ export default {
     components: {
         Shopcart,
         Cartcontrol
+    },
+    events:{
+        'cart.add'(target){
+            this._drop(target);
+        }
     }
 }
 
@@ -250,7 +261,7 @@ export default {
                         text-decoration:line-through
                         font-size:10px
                         color:rgb(147, 153, 159)
-                
+
                 .cartcontrol-wrapper
                     position:absolute
                     right:0
